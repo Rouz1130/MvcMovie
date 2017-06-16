@@ -29,11 +29,12 @@ namespace MvcMovie.Controllers
         // GET: /HelloWorld/Welcome/ 
         // HTTP GET method that is invoked by appending "/HelloWorld/Welcome/" to the URL
 
-        public string Welcome(string name, int ID = 1)
+        public IActionResult Welcome(string name, int nunTimes = 1)
         {
-            // HtmlEncoder.Default.Encode to protect the app from malicious input (namely JavaScript) using System.Text.Encodings.Web; allows app to use HtmlEncoder.
-            // Interpolated Strings: C# 6 feature ($"Hello {name}, ID: {ID}");
-            return HtmlEncoder.Default.Encode($"Hello {name}, ID: {ID}");  
+            ViewData["Message"] = "Hello" + name;   //ViewData is a dictionary which is a Dynamic obejct:Meaning no defined properties until we put something in it.
+            ViewData["NunTimes"] = nunTimes;        //ViewData dictionary object contains data that will be padded to the view.    
+
+            return View();
         }
     }
 }
