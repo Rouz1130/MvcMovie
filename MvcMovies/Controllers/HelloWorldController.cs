@@ -29,10 +29,13 @@ namespace MvcMovie.Controllers
         // GET: /HelloWorld/Welcome/ 
         // HTTP GET method that is invoked by appending "/HelloWorld/Welcome/" to the URL
 
-        public IActionResult Welcome(string name, int nunTimes = 1)
+        public IActionResult Welcome(string name, int numTimes = 1)
         {
-            ViewData["Message"] = "Hello" + name;   //ViewData is a dictionary which is a Dynamic obejct:Meaning no defined properties until we put something in it.
-            ViewData["NunTimes"] = nunTimes;        //ViewData dictionary object contains data that will be added to the view.    
+            ViewData["Message"] = "Hello " + name;
+            ViewData["NumTimes"] = numTimes;
+
+            /*ViewData["Message"] = "Hello" + name;*/   //ViewData is a dictionary which is a Dynamic obejct:Meaning no defined properties until we put something in it.
+            /*ViewData["NunTimes"] = nunTimes;        *///ViewData dictionary object contains data that will be added to the view.    
 
             return View();
         }
