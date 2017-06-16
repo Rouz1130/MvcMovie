@@ -48,12 +48,22 @@ namespace MvcMovies
             }
 
             app.UseStaticFiles();
+     
 
+            // UseMvc add an instance of RouterMiddleware in the middleware pipeline bleow. 
+            // Example of Conventional routing because establishes a convention for URL paths.
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    // MVC invokes controller classes (and the action methods within them) depending on the incoming URL
+                    // The default URL routing logic used by MVC uses a format like this to determine what code to invoke: Therefore the HomeController Action Index is the default route.
+
+                    // First path segment maps to the controller name, the second maps to action name, third segment optional ID used to map to model entity.
+                    //         [Controller]/     [ActionName]/  [Parameters]
+                    template: "{controller=Home}/{action=Index}/{id?}");  // the ? indicates parameter is optional.
+                // This mapping is based on the controller and action names only. Example Using this default route, the URL path /Products/List maps to the ProductsController.List action, and /Blog/Article/17 maps to BlogController.Article
+
             });
         }
     }
