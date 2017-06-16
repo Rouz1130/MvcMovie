@@ -32,7 +32,7 @@ namespace MvcMovie.Controllers
         public IActionResult Welcome(string name, int nunTimes = 1)
         {
             ViewData["Message"] = "Hello" + name;   //ViewData is a dictionary which is a Dynamic obejct:Meaning no defined properties until we put something in it.
-            ViewData["NunTimes"] = nunTimes;        //ViewData dictionary object contains data that will be padded to the view.    
+            ViewData["NunTimes"] = nunTimes;        //ViewData dictionary object contains data that will be added to the view.    
 
             return View();
         }
