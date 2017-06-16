@@ -35,7 +35,7 @@ namespace MvcMovie.Controllers
             ViewData["NumTimes"] = numTimes;
 
             /*ViewData["Message"] = "Hello" + name;*/   //ViewData is a dictionary which is a Dynamic obejct:Meaning no defined properties until we put something in it.
-            /*ViewData["NunTimes"] = nunTimes;        *///ViewData dictionary object contains data that will be added to the view.    
+            /*ViewData["NunTimes"] = nunTimes;        *///ViewData dictionary object contains data that will be passed to the view.    
 
             return View();
         }

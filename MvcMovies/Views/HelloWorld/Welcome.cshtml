@@ -4,6 +4,10 @@
 
 <h2>Welcome</h2>
 
+@*ViewData is a dictionary object that contains data passed from URL Via Controller to this view
+Loop displays "Hello" NumTimes
+Note: ViewData dictionary is used to pass data in upcoming we will use ViewModel to pass data from Controller to a View. ViewModel
+is preferred because it is STRONGLY Typed. *@
 <ul>
     @for (int i = 0; i < (int)ViewData["NumTimes"]; i++)
     {
