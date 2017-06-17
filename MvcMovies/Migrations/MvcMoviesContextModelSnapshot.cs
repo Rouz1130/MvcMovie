@@ -16,7 +16,7 @@ namespace MvcMovies.Migrations
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MvcMovies.Models.Moive", b =>
+            modelBuilder.Entity("MvcMovies.Models.Movie", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -31,7 +31,7 @@ namespace MvcMovies.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Moive");
+                    b.ToTable("Movie");
                 });
         }
     }

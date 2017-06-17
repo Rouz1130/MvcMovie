@@ -7,8 +7,8 @@ using MvcMovies.Models;
 
 namespace MvcMovies.Migrations
 {
-    [DbContext(typeof(MvcMovieContext))]
-    [Migration("20170617011159_Initial")]
+    [DbContext(typeof(MvcMoviesContext))]
+    [Migration("20170617033540_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,7 +17,7 @@ namespace MvcMovies.Migrations
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MvcMovies.Models.Moive", b =>
+            modelBuilder.Entity("MvcMovies.Models.Movie", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
@@ -32,7 +32,7 @@ namespace MvcMovies.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Moive");
+                    b.ToTable("Movie");
                 });
         }
     }
