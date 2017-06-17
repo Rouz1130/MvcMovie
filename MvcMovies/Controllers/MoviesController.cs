@@ -44,6 +44,12 @@ namespace MvcMovies.Controllers
             return View(await movies.ToListAsync());
         }
 
+        [HttpPost]
+        public string Index(string searchString, bool notUsed)
+        {
+            return "From[HttpPost]Index: filter on" + searchString;
+        }
+
 
         // GET: Moives/Details/5
 
