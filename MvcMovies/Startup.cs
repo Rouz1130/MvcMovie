@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using MvcMovies.Models;
 
 namespace MvcMovies
 {
@@ -29,6 +31,9 @@ namespace MvcMovies
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddDbContext<MvcMoviesContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MvcMoviesContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

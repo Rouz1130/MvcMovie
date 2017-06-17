@@ -7,6 +7,7 @@ namespace MvcMovies.Models
 {
     public class Moive
     {
+        // type 'prop' hit tab twice shortcut for writing properties.
         public int ID { get; set; } //ID is primary key
         public string Title { get; set; }
         public DateTime RelaseDate { get; set; }
