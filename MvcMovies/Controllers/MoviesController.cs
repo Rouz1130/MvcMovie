@@ -26,13 +26,22 @@ namespace MvcMovies.Controllers
         }
 
 
-
-
-
         // GET: Moives
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Movie.ToListAsync());
+            // this first line creates a LINQ query to select movies.
+            var movies = from m in _context.Movie
+                         select m;
+
+            // If the searchString parameter contains a string the movie query is modified to filter value of search string.
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                // => is a lamda expression , which are used in method-based LINQ queries as arguments to a standard query operator such as Where mehtod or Contains method.(Linq methods: Contains, Where, OrderBy).
+                //Linq quries are not exectued when they are defined or modified, when there methods (look above) are called. Rather they are delayed until teh Valueis iterated over in the ToListAsync method is called. 
+                movies = movies.Where(s => s.Title.Contains(searchString));
+            }
+
+            return View(await movies.ToListAsync());
         }
 
 
@@ -86,13 +95,14 @@ namespace MvcMovies.Controllers
         }
 
         // GET: Moives/Edit/5
+        // This method action for Edit fetches a Movie and populates the edit form via Edit.cshtml(view).
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
+                                             // EF method(single...) this method looks up Movie ID parameter and returns selected Movie if matched.   
             var moive = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
             if (moive == null)
             {
@@ -101,11 +111,17 @@ namespace MvcMovies.Controllers
             return View(moive);
         }
 
+
+
+
         // POST: Moives/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // This Action method for edit is a Post which processes teh posted Movie Values.
+
+        // HttpPost specifies that Edit method can be invoked ONLY for POST requests.
         [HttpPost]
+        // VAlidateAntiForgeryToken is used to prevent forgery of a request and is paired with a token generated in the edit view. View/Edit generates the token with a form tag helper.
         [ValidateAntiForgeryToken]
+                                                      // Bind attribute is a way to protect against over-posting. Only include properties in Bind attribute that you want to change. Although ViewModels is an alternative way to approach overposting.                      
         public async Task<IActionResult> Edit(int id, [Bind("ID,Title,RelaseDate,Genre,Price")] Movie moive)
         {
             if (id != moive.ID)
@@ -113,12 +129,12 @@ namespace MvcMovies.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // this method verifies that the data submitted in the form can be used to modit (edit, update) a Movie object. If valid proceeds to run method.
             {
                 try
                 {
                     _context.Update(moive);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync(); // Once method above is verified. This method updates its saved to the database.
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -131,7 +147,7 @@ namespace MvcMovies.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Index"); // After data has been saved the code redirects theuser to the Index Action mehtod in this controller obviously. Which displays the movie collection including the changes that you have made as a user.
             }
             return View(moive);
         }
