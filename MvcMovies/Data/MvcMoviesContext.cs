@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MvcMovies.Models
 {
+
+
+    //MvcMovieContext object handles the task of connecting to the database and mapping Movie objects to database records.The database context is registered with the Dependency Injection container in the ConfigureServices method in the Startup.cs file:
     public class MvcMoviesContext : DbContext
     {
         public MvcMoviesContext (DbContextOptions<MvcMoviesContext> options)
@@ -13,6 +16,6 @@ namespace MvcMovies.Models
         {
         }
 
-        public DbSet<MvcMovies.Models.Moive> Moive { get; set; }
+        public DbSet<MvcMovies.Models.Movie> Movie { get; set; }
     }
 }

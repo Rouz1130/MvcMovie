@@ -9,8 +9,15 @@ using MvcMovies.Models;
 
 namespace MvcMovies.Controllers
 {
+
+    // Constructor below.
+    // MVCMovieContext is teh database context
+
     public class MoviesController : Controller
     {
+       // MVCMovieContext is the database context
+      // we use dependency injection to inject  the db context(MvcContext) into the controller
+      // the DB context is used in each of the CRUD mehtods in the controller
         private readonly MvcMoviesContext _context;
 
         public MoviesController(MvcMoviesContext context)
@@ -18,13 +25,20 @@ namespace MvcMovies.Controllers
             _context = context;    
         }
 
+
+
+
+
         // GET: Moives
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Moive.ToListAsync());
+            return View(await _context.Movie.ToListAsync());
         }
 
+
         // GET: Moives/Details/5
+
+        // the id is defined as nullable thats why we have a ? after the data type(int?) its preventitive in case an ID value is not provided.
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,13 +46,20 @@ namespace MvcMovies.Controllers
                 return NotFound();
             }
 
-            var moive = await _context.Moive
+            var moive = await _context.Movie
+
+                // A lambda expression is passed in to select movie entities that matchteh route dat or query string value.
+                
                 .SingleOrDefaultAsync(m => m.ID == id);
+
+
+            // if movie not found return not found
             if (moive == null)
             {
                 return NotFound();
             }
 
+            // If movie is found , an instance of the Movie model is passed to the details View page.
             return View(moive);
         }
 
@@ -53,7 +74,7 @@ namespace MvcMovies.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,RelaseDate,Genre,Price")] Moive moive)
+        public async Task<IActionResult> Create([Bind("ID,Title,RelaseDate,Genre,Price")] Movie moive)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +93,7 @@ namespace MvcMovies.Controllers
                 return NotFound();
             }
 
-            var moive = await _context.Moive.SingleOrDefaultAsync(m => m.ID == id);
+            var moive = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
             if (moive == null)
             {
                 return NotFound();
@@ -85,7 +106,7 @@ namespace MvcMovies.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,RelaseDate,Genre,Price")] Moive moive)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,RelaseDate,Genre,Price")] Movie moive)
         {
             if (id != moive.ID)
             {
@@ -123,7 +144,7 @@ namespace MvcMovies.Controllers
                 return NotFound();
             }
 
-            var moive = await _context.Moive
+            var moive = await _context.Movie
                 .SingleOrDefaultAsync(m => m.ID == id);
             if (moive == null)
             {
@@ -138,15 +159,15 @@ namespace MvcMovies.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var moive = await _context.Moive.SingleOrDefaultAsync(m => m.ID == id);
-            _context.Moive.Remove(moive);
+            var moive = await _context.Movie.SingleOrDefaultAsync(m => m.ID == id);
+            _context.Movie.Remove(moive);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
         private bool MoiveExists(int id)
         {
-            return _context.Moive.Any(e => e.ID == id);
+            return _context.Movie.Any(e => e.ID == id);
         }
     }
 }

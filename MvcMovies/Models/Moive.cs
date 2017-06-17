@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MvcMovies.Models
 {
-    public class Moive
+    public class Movie
     {
         // type 'prop' hit tab twice shortcut for writing properties.
         public int ID { get; set; } //ID is primary key

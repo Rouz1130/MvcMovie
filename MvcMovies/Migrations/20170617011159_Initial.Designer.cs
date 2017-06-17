@@ -7,7 +7,7 @@ using MvcMovies.Models;
 
 namespace MvcMovies.Migrations
 {
-    [DbContext(typeof(MvcMoviesContext))]
+    [DbContext(typeof(MvcMovieContext))]
     [Migration("20170617011159_Initial")]
     partial class Initial
     {

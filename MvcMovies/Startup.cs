@@ -32,6 +32,8 @@ namespace MvcMovies
             // Add framework services.
             services.AddMvc();
 
+            // Moive database context being added to the Dependency injection.
+            //specifies the database to use the connection string. => ambda operator 
             services.AddDbContext<MvcMoviesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("MvcMoviesContext")));
         }
@@ -70,6 +72,8 @@ namespace MvcMovies
                 // This mapping is based on the controller and action names only. Example Using this default route, the URL path /Products/List maps to the ProductsController.List action, and /Blog/Article/17 maps to BlogController.Article
 
             });
+
+            SeedData.Initialize(app.ApplicationServices);
         }
     }
 }
