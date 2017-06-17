@@ -9,11 +9,11 @@ using MvcMovies.Models;
 
 namespace MvcMovies.Controllers
 {
-    public class MoivesController : Controller
+    public class MoviesController : Controller
     {
         private readonly MvcMoviesContext _context;
 
-        public MoivesController(MvcMoviesContext context)
+        public MoviesController(MvcMoviesContext context)
         {
             _context = context;    
         }
