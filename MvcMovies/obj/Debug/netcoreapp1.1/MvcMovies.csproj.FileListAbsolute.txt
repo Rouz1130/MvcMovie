@@ -6,4 +6,3 @@ C:\Users\Rouz\Desktop\MvcMovies\MvcMovies\bin\Debug\netcoreapp1.1\MvcMovies.pdb
 C:\Users\Rouz\Desktop\MvcMovies\MvcMovies\obj\Debug\netcoreapp1.1\MvcMovies.AssemblyInfo.cs
 C:\Users\Rouz\Desktop\MvcMovies\MvcMovies\obj\Debug\netcoreapp1.1\MvcMovies.dll
 C:\Users\Rouz\Desktop\MvcMovies\MvcMovies\obj\Debug\netcoreapp1.1\MvcMovies.pdb
-C:\Users\Rouz\Desktop\MvcMovies\MvcMovies\obj\Debug\netcoreapp1.1\MvcMovies.csprojResolveAssemblyReference.cache
