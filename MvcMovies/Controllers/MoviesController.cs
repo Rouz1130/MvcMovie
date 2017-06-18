@@ -29,6 +29,7 @@ namespace MvcMovies.Controllers
         // GET: Moives
         public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
+            // Following code uses LINQ query to get a list of all genres from DB.
             IQueryable<string> genreQuery = from m in _context.Movie
                                             orderby m.Genre
                                             select m.Genre;
@@ -46,6 +47,8 @@ namespace MvcMovies.Controllers
             }
 
             var movieGenreVM = new MovieGenreViewModel();
+            
+            // SelectList of genres is created by projecting distinct genres , we do not want duplicate genres.
             movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync());
             movieGenreVM.movies = await movies.ToListAsync();
 
