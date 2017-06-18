@@ -27,21 +27,29 @@ namespace MvcMovies.Controllers
 
 
         // GET: Moives
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
-            // this first line creates a LINQ query to select movies.
+            IQueryable<string> genreQuery = from m in _context.Movie
+                                            orderby m.Genre
+                                            select m.Genre;
+
             var movies = from m in _context.Movie
                          select m;
 
-            // If the searchString parameter contains a string the movie query is modified to filter value of search string.
             if (!String.IsNullOrEmpty(searchString))
             {
-                // => is a lamda expression , which are used in method-based LINQ queries as arguments to a standard query operator such as Where mehtod or Contains method.(Linq methods: Contains, Where, OrderBy).
-                //Linq quries are not exectued when they are defined or modified, when there methods (look above) are called. Rather they are delayed until teh Valueis iterated over in the ToListAsync method is called. 
                 movies = movies.Where(s => s.Title.Contains(searchString));
             }
+            if(!String.IsNullOrEmpty(movieGenre))
+            {
+                movies = movies.Where(x => x.Genre == movieGenre);
+            }
 
-            return View(await movies.ToListAsync());
+            var movieGenreVM = new MovieGenreViewModel();
+            movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync());
+            movieGenreVM.movies = await movies.ToListAsync();
+
+            return View(movieGenreVM);
         }
 
         [HttpPost]
