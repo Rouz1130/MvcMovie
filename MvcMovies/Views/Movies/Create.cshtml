@@ -1,4 +1,4 @@
-@model MvcMovies.Models.Moive
+@model MvcMovies.Models.Movie
 
 @{
     ViewData["Title"] = "Create";
@@ -19,10 +19,17 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="RelaseDate" class="col-md-2 control-label"></label>
+            <label asp-for="Rating" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="RelaseDate" class="form-control" />
-                <span asp-validation-for="RelaseDate" class="text-danger"></span>
+                <input asp-for="Rating" class="form-control" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ReleaseDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ReleaseDate" class="form-control" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">

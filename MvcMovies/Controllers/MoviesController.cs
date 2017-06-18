@@ -100,7 +100,7 @@ namespace MvcMovies.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,RelaseDate,Genre,Price")] Movie moive)
+        public async Task<IActionResult> Create([Bind("ID,Title,RelaseDate,Genre,Price,Rating")] Movie moive)
         {
             if (ModelState.IsValid)
             {
@@ -139,7 +139,7 @@ namespace MvcMovies.Controllers
         // VAlidateAntiForgeryToken is used to prevent forgery of a request and is paired with a token generated in the edit view. View/Edit generates the token with a form tag helper.
         [ValidateAntiForgeryToken]
                                                       // Bind attribute is a way to protect against over-posting. Only include properties in Bind attribute that you want to change. Although ViewModels is an alternative way to approach overposting.                      
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,RelaseDate,Genre,Price")] Movie moive)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,RelaseDate,Genre,Price,Rating")] Movie moive)
         {
             if (id != moive.ID)
             {
