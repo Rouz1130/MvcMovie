@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+// System.ComponentModel.DataAnnotations namespace provides formatting attributes in addition to the built-in set of validation attributes
 
 namespace MvcMovies.Models
 {
@@ -12,6 +13,7 @@ namespace MvcMovies.Models
         [Required]
         public string Title { get; set; }
 
+        //DataType Enumeration provides for many data types, such as Date, Time, PhoneNumber, Currency, EmailAddress
         [Display(Name = "Release Date")] //Display attribute specifies what to display for the name of a field(in our case 'Release Date') instead of ReleaseDate.
         [DataType(DataType.Date)]       // DataType attribute dpecifies the type of the Date , therefore the time information is not displayed.
         public DateTime ReleaseDate { get; set; }

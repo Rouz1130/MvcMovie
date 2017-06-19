@@ -75,7 +75,7 @@ namespace MvcMovies.Controllers
             var moive = await _context.Movie
 
                 // A lambda expression is passed in to select movie entities that matchteh route dat or query string value.
-                
+                // EF makes it easy to search for data using the SingleOrDefaultAsync method                
                 .SingleOrDefaultAsync(m => m.ID == id);
 
 
@@ -102,7 +102,7 @@ namespace MvcMovies.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Title,RelaseDate,Genre,Price,Rating")] Movie moive)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // this ModelState.IsValid checks whether there are any valadiaion errors. by callings this method it evaluates any validation attributes that have been applied to the object.
             {
                 _context.Add(moive);
                 await _context.SaveChangesAsync();
