@@ -10716,10 +10716,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rouz\\Desktop\\MvcMovies\\MvcMovies\\MvcMovies.csproj",
+      "projectUniqueName": "C:\\Users\\Rouz\\Desktop\\MvcMovie\\MvcMovies\\MvcMovies.csproj",
       "projectName": "MvcMovies",
-      "projectPath": "C:\\Users\\Rouz\\Desktop\\MvcMovies\\MvcMovies\\MvcMovies.csproj",
-      "outputPath": "C:\\Users\\Rouz\\Desktop\\MvcMovies\\MvcMovies\\obj\\",
+      "projectPath": "C:\\Users\\Rouz\\Desktop\\MvcMovie\\MvcMovies\\MvcMovies.csproj",
+      "outputPath": "C:\\Users\\Rouz\\Desktop\\MvcMovie\\MvcMovies\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
