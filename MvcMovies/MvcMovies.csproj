@@ -74,6 +74,7 @@
     <Content Include="wwwroot\images\t-pic24.jpg" />
     <Content Include="wwwroot\images\t-pic25.jpg" />
     <Content Include="wwwroot\images\TEST.jpg" />
+    <Content Include="wwwroot\images\TEST1.jpg" />
     <Content Include="wwwroot\images\Thumbs.db" />
     <Content Include="wwwroot\images\tw.png" />
     <Content Include="wwwroot\js\example.js" />
